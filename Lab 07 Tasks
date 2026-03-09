@@ -1,0 +1,305 @@
+#include <stdio.h>
+
+// ===========================
+// Problem 1: Circular Right Shift
+// ===========================
+int main() {
+    int arr[5];
+    int last;
+    int i;
+
+    printf("Enter 5 integers: ");
+    for (i = 0; i < 5; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // save last element
+    last = arr[4];
+
+    // move each element one step to the right
+    arr[4] = arr[3];
+    arr[3] = arr[2];
+    arr[2] = arr[1];
+    arr[1] = arr[0];
+
+    // put last element at the front
+    arr[0] = last;
+
+    printf("Shifted: ");
+    for (i = 0; i < 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+#include <stdio.h>
+
+// ===========================
+// Problem 2: Count Occurrences
+// ===========================
+int main() {
+    int arr[10];
+    int target;
+    int count;
+    int i;
+
+    printf("Enter 10 numbers: ");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter number to search: ");
+    scanf("%d", &target);
+
+    count = 0;
+    for (i = 0; i < 10; i++) {
+        if (arr[i] == target) {
+            count = count + 1;
+        }
+    }
+
+    if (count == 0) {
+        printf("Number not found\n");
+    } else {
+        printf("Number found %d time(s)\n", count);
+    }
+
+    return 0;
+}
+#include <stdio.h>
+
+// ===========================
+// Problem 3: Pass / Fail Separation
+// ===========================
+int main() {
+    int pass[10];
+    int fail[10];
+    int pc;
+    int fc;
+    int mark;
+    float psum;
+    float fsum;
+    float pavg;
+    float favg;
+    int i;
+
+    pc   = 0;
+    fc   = 0;
+    psum = 0;
+    fsum = 0;
+
+    printf("Enter marks one by one. Enter -1 to stop:\n");
+
+    while (1) {
+        scanf("%d", &mark);
+
+        if (mark == -1) {
+            break;
+        }
+
+        if (mark >= 5 && mark <= 10) {
+            pass[pc] = mark;
+            pc = pc + 1;
+            psum = psum + mark;
+        }
+
+        if (mark >= 0 && mark < 5) {
+            fail[fc] = mark;
+            fc = fc + 1;
+            fsum = fsum + mark;
+        }
+    }
+
+    printf("Pass marks: ");
+    for (i = 0; i < pc; i++) {
+        printf("%d ", pass[i]);
+    }
+
+    if (pc == 0) {
+        pavg = 0;
+    } else {
+        pavg = psum / pc;
+    }
+    printf("\nPass average: %.2f\n", pavg);
+
+    printf("Fail marks: ");
+    for (i = 0; i < fc; i++) {
+        printf("%d ", fail[i]);
+    }
+
+    if (fc == 0) {
+        favg = 0;
+    } else {
+        favg = fsum / fc;
+    }
+    printf("\nFail average: %.2f\n", favg);
+
+    return 0;
+}
+#include <stdio.h>
+
+// ===========================
+// Problem 4: Toggle Case
+// ===========================
+int main() {
+    char str[200];
+    int i;
+
+    printf("Enter a sentence: ");
+    scanf(" %[^\n]", str);
+
+    for (i = 0; str[i] != '\0'; i++) {
+
+        // if lowercase, convert to uppercase
+        if (str[i] >= 'a' && str[i] <= 'z') {
+            str[i] = str[i] - 32;
+        }
+
+        // if uppercase, convert to lowercase
+        else if (str[i] >= 'A' && str[i] <= 'Z') {
+            str[i] = str[i] + 32;
+        }
+
+        // if space or symbol, leave it as it is
+    }
+
+    printf("Converted: %s\n", str);
+
+    return 0;
+}
+#include <stdio.h>
+
+// ===========================
+// Problem 5: Max minus Min
+// ===========================
+int main() {
+    int arr[10];
+    int i;
+    int max;
+    int min;
+    int difference;
+
+    printf("Enter 10 integers: ");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // start by assuming first element is both max and min
+    max = arr[0];
+    min = arr[0];
+
+    for (i = 1; i < 10; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+
+    difference = max - min;
+    printf("Largest:    %d\n", max);
+    printf("Smallest:   %d\n", min);
+    printf("Difference: %d\n", difference);
+
+    return 0;
+}
+#include <stdio.h>
+
+// ===========================
+// Problem 6: Vowels and Consonants
+// ===========================
+int main() {
+    char str[100];
+    char c;
+    char lower;
+    int vowels;
+    int consonants;
+    int i;
+
+    vowels     = 0;
+    consonants = 0;
+
+    printf("Enter a word: ");
+    scanf("%s", str);
+
+    for (i = 0; str[i] != '\0'; i++) {
+        c = str[i];
+
+        // convert to lowercase for easy comparison
+        if (c >= 'A' && c <= 'Z') {
+            lower = c + 32;
+        } else {
+            lower = c;
+        }
+
+        // only process letters
+        if (lower >= 'a' && lower <= 'z') {
+            if (lower == 'a' || lower == 'e' || lower == 'i' || lower == 'o' || lower == 'u') {
+                vowels = vowels + 1;
+            } else {
+                consonants = consonants + 1;
+            }
+        }
+    }
+
+    printf("Vowels:     %d\n", vowels);
+    printf("Consonants: %d\n", consonants);
+
+    return 0;
+}
+#include <stdio.h>
+
+// ===========================
+// Problem 7: Mark Duplicates as -1
+// ===========================
+int main() {
+    int arr[10];
+    int i;
+    int j;
+
+    printf("Enter 10 integers: ");
+    for (i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    for (i = 0; i < 10; i++) {
+
+        // skip elements already marked as duplicate
+        if (arr[i] == -1) {
+            continue;
+        }
+
+        // compare with every element after it
+        for (j = i + 1; j < 10; j++) {
+            if (arr[j] == arr[i]) {
+                arr[j] = -1;
+            }
+        }
+    }
+
+    printf("Result: ");
+    for (i = 0; i < 10; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+#include <stdio.h>
+
+// ===========================
+// Problem 8: Negated Scanset
+// ===========================
+int main() {
+    char str[200];
+
+    printf("Enter characters (alphabets will be ignored): ");
+    scanf("%[^A-Za-z]", str);
+
+    printf("You entered: %s\n", str);
+
+    return 0;
+}
