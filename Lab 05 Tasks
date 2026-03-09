@@ -1,0 +1,429 @@
+/* -------------------- Q1 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int age;
+    float fitnessScore;
+
+    printf("=== Fitness Center Membership Discount System ===\n\n");
+
+    printf("Enter your Fitness Score (0-100): ");
+    scanf("%f", &fitnessScore);
+
+    printf("Enter your Age: ");
+    scanf("%d", &age);
+
+    printf("\n--- Result ---\n");
+
+    if (fitnessScore >= 85) {
+        if (age < 25) {
+            printf("Congratulations! You qualify for a 40%% Discount.\n");
+            printf("Reason: High fitness score (%.1f) and age under 25.\n", fitnessScore);
+        } else {
+            printf("Congratulations! You qualify for a 25%% Discount.\n");
+            printf("Reason: High fitness score (%.1f) and age 25 or above.\n", fitnessScore);
+        }
+    } 
+    else {
+        if (fitnessScore >= 70 && age < 30) {
+            printf("You qualify for a 15%% Discount.\n");
+            printf("Reason: Moderate fitness score (%.1f) and age under 30.\n", fitnessScore);
+        } 
+        else {
+            printf("Sorry, you do not qualify for any discount at this time.\n");
+            printf("Reason: Fitness score (%.1f) is below 70 or age is 30+.\n", fitnessScore);
+        }
+    }
+
+    return 0;
+}
+
+
+/* -------------------- Q2 -------------------- */
+#include <stdio.h>
+
+int main() {
+    float data, bill;
+    int type;
+
+    printf("Enter Data Usage (GB): ");
+    scanf("%f", &data);
+
+    printf("Customer Type (1=Prepaid, 2=Postpaid): ");
+    scanf("%d", &type);
+
+    if (data <= 2) {
+        bill = data * 50;
+    } 
+    else if (data <= 10) {
+        if (type == 1) {
+            bill = data * 40;
+        } else {
+            bill = data * 35;
+        }
+    } 
+    else {
+        bill = data * 25;
+    }
+
+    printf("Total Bill: Rs. %.2f\n", bill);
+
+    return 0;
+}
+
+
+/* -------------------- Q3 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int mainType, subType;
+    float weight, bill;
+
+    printf("Enter Luggage Weight (kg): ");
+    scanf("%f", &weight);
+
+    printf("\nSelect Luggage Type:\n");
+    printf("1. Handbag\n");
+    printf("2. Checked Bag\n");
+    printf("3. Sports Equipment\n");
+    printf("Enter choice: ");
+    scanf("%d", &mainType);
+
+    switch (mainType) {
+
+        case 1:
+            printf("\nSelect Handbag Size:\n");
+            printf("1. Small (Rs. 100/kg)\n");
+            printf("2. Large (Rs. 200/kg)\n");
+            printf("Enter choice: ");
+            scanf("%d", &subType);
+
+            switch (subType) {
+                case 1: bill = weight * 100; break;
+                case 2: bill = weight * 200; break;
+                default:
+                    printf("Invalid size choice!\n");
+                    return 1;
+            }
+            break;
+
+        case 2:
+            printf("\nSelect Journey Type:\n");
+            printf("1. Domestic (Rs. 300/kg)\n");
+            printf("2. International (Rs. 500/kg)\n");
+            printf("Enter choice: ");
+            scanf("%d", &subType);
+
+            switch (subType) {
+                case 1: bill = weight * 300; break;
+                case 2: bill = weight * 500; break;
+                default:
+                    printf("Invalid journey type!\n");
+                    return 1;
+            }
+            break;
+
+        case 3:
+            bill = weight * 1000;
+            break;
+
+        default:
+            printf("Invalid luggage type!\n");
+            return 1;
+    }
+
+    printf("\nTotal Luggage Fee: Rs. %.2f\n", bill);
+
+    return 0;
+}
+
+
+/* -------------------- Q4 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int category, subType, quantity;
+    float price, bill;
+
+    printf("Select Book Category:\n");
+    printf("1. Fiction\n");
+    printf("2. Non-Fiction\n");
+    printf("Enter choice: ");
+    scanf("%d", &category);
+
+    switch (category) {
+
+        case 1:
+            printf("\nSelect Fiction Type:\n");
+            printf("1. Novel (Rs. 600)\n");
+            printf("2. Comic (Rs. 300)\n");
+            printf("Enter choice: ");
+            scanf("%d", &subType);
+
+            switch (subType) {
+                case 1:
+                    price = 600;
+                    printf("Book : Novel\n");
+                    break;
+                case 2:
+                    price = 300;
+                    printf("Book : Comic\n");
+                    break;
+                default:
+                    printf("Invalid choice!\n");
+                    return 1;
+            }
+            break;
+
+        case 2:
+            printf("\nSelect Non-Fiction Type:\n");
+            printf("1. Biography (Rs. 800)\n");
+            printf("2. Self-Help (Rs. 500)\n");
+            printf("Enter choice: ");
+            scanf("%d", &subType);
+
+            switch (subType) {
+                case 1:
+                    price = 800;
+                    printf("Book : Biography\n");
+                    break;
+                case 2:
+                    price = 500;
+                    printf("Book : Self-Help\n");
+                    break;
+                default:
+                    printf("Invalid choice!\n");
+                    return 1;
+            }
+            break;
+
+        default:
+            printf("Invalid category!\n");
+            return 1;
+    }
+
+    printf("Enter Quantity: ");
+    scanf("%d", &quantity);
+
+    bill = price * quantity;
+
+    printf("Price : Rs. %.2f\n", price);
+    printf("Quantity : %d\n", quantity);
+    printf("Total : Rs. %.2f\n", bill);
+
+    return 0;
+}
+
+
+/* -------------------- Q5 -------------------- */
+#include <stdio.h>
+
+int main() {
+    float salary, incentiveRate, incentiveAmount;
+    int years;
+
+    printf("Enter Salary: ");
+    scanf("%f", &salary);
+
+    printf("Enter Years of Service: ");
+    scanf("%d", &years);
+
+    if (years > 15) {
+        incentiveRate = 35;
+    } 
+    else if (years > 7) {
+        incentiveRate = 20;
+    } 
+    else {
+        incentiveRate = 5;
+    }
+
+    incentiveAmount = salary * incentiveRate / 100;
+
+    printf("Incentive Rate : %.0f%%\n", incentiveRate);
+    printf("Incentive Amount : Rs. %.2f\n", incentiveAmount);
+
+    return 0;
+}
+
+
+/* -------------------- Q6 -------------------- */
+#include <stdio.h>
+
+int main() {
+    float a, b, c, d;
+
+    printf("Enter four side lengths:\n");
+    printf("Side 1: "); scanf("%f", &a);
+    printf("Side 2: "); scanf("%f", &b);
+    printf("Side 3: "); scanf("%f", &c);
+    printf("Side 4: "); scanf("%f", &d);
+
+    if (a <= 0 || b <= 0 || c <= 0 || d <= 0) {
+        printf("Not a valid quadrilateral!\n");
+    } 
+    else {
+        if (a == b && b == c && c == d) {
+            printf("Square\n");
+        } 
+        else if (a == c && b == d) {
+            printf("Rectangle\n");
+        } 
+        else {
+            printf("General Quadrilateral\n");
+        }
+    }
+
+    return 0;
+}
+
+
+/* -------------------- Q7 -------------------- */
+#include <stdio.h>
+
+int main() {
+    long cardNumber = 1234567890, enteredCard;
+    int pin = 7890, enteredPin;
+    float balance = 10000.0, amount;
+
+    printf("Enter Card Number: ");
+    scanf("%ld", &enteredCard);
+
+    if (enteredCard == cardNumber) {
+
+        printf("Enter PIN: ");
+        scanf("%d", &enteredPin);
+
+        if (enteredPin == pin) {
+
+            printf("Enter Transaction Amount: Rs. ");
+            scanf("%f", &amount);
+
+            if (amount <= balance) {
+                balance -= amount;
+
+                printf("\nTransaction Successful!\n");
+                printf("Amount Debited : Rs. %.2f\n", amount);
+                printf("Remaining Balance: Rs. %.2f\n", balance);
+            } 
+            else {
+                printf("\nInsufficient Funds!\n");
+                printf("Available Balance: Rs. %.2f\n", balance);
+            }
+        } 
+        else {
+            printf("\nInvalid PIN!\n");
+        }
+    } 
+    else {
+        printf("\nInvalid Card!\n");
+    }
+
+    return 0;
+}
+
+
+/* -------------------- Q8 -------------------- */
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int choice, gender;
+    float weight, height, age, result;
+
+    printf("1. BMI Calculation\n");
+    printf("2. BMR Calculation\n");
+    printf("3. Ideal Weight (Devine Formula)\n");
+    printf("4. Heart Rate Zone\n");
+    printf("Enter choice: ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+
+        case 1:
+            printf("\nEnter Weight (kg): ");
+            scanf("%f", &weight);
+            printf("Enter Height (m): ");
+            scanf("%f", &height);
+
+            if (weight <= 0 || height <= 0) {
+                printf("Error: Weight and Height must be positive!\n");
+            } 
+            else {
+                result = weight / pow(height, 2);
+
+                printf("\nBMI = %.2f\n", result);
+
+                if (result < 18.5)
+                    printf("Category: Underweight\n");
+                else if (result < 24.9)
+                    printf("Category: Normal Weight\n");
+                else if (result < 29.9)
+                    printf("Category: Overweight\n");
+                else
+                    printf("Category: Obese\n");
+            }
+            break;
+
+        case 2:
+            printf("\nEnter Weight (kg): ");
+            scanf("%f", &weight);
+            printf("Enter Height (cm): ");
+            scanf("%f", &height);
+            printf("Enter Age (years): ");
+            scanf("%f", &age);
+            printf("Gender (1=Male, 2=Female): ");
+            scanf("%d", &gender);
+
+            if (gender == 1)
+                result = (10 * weight) + (6.25 * height) - (5 * age) + 5;
+            else
+                result = (10 * weight) + (6.25 * height) - (5 * age) - 161;
+
+            printf("\nBMR = %.2f calories/day\n", result);
+            break;
+
+        case 3: {
+            printf("\nEnter Height (cm): ");
+            scanf("%f", &height);
+            printf("Gender (1=Male, 2=Female): ");
+            scanf("%d", &gender);
+
+            float heightInches = height / 2.54;
+            float extraInches = fabs(heightInches - 60);
+
+            if (gender == 1)
+                result = 50.0 + (2.3 * extraInches);
+            else
+                result = 45.5 + (2.3 * extraInches);
+
+            printf("\nIdeal Weight = %.2f kg\n", result);
+            break;
+        }
+
+        case 4:
+            printf("\nEnter Age (years): ");
+            scanf("%f", &age);
+
+            if (age > 0) {
+                float maxHR = 220 - age;
+
+                printf("\nMax Heart Rate : %.0f bpm\n", maxHR);
+                printf("-----------------------------\n");
+                printf("Zone 1 (50%%): %.0f bpm\n", maxHR * 0.50);
+                printf("Zone 2 (60%%): %.0f bpm\n", maxHR * 0.60);
+                printf("Zone 3 (70%%): %.0f bpm\n", maxHR * 0.70);
+                printf("Zone 4 (80%%): %.0f bpm\n", maxHR * 0.80);
+                printf("Zone 5 (90%%): %.0f bpm\n", maxHR * 0.90);
+            }
+            else {
+                printf("Error: Age must be positive!\n");
+            }
+            break;
+
+        default:
+            printf("Invalid choice!\n");
+    }
+
+    return 0;
+}
