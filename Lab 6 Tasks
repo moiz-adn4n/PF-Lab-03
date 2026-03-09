@@ -1,0 +1,313 @@
+/* -------------------- Q1 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int attendance;
+    int totalPresent = 0;
+
+    for(int i = 1; i <= 30; i++) {
+        printf("Enter attendance for student %d (1 = Present, 0 = Absent): ", i);
+        scanf("%d", &attendance);
+
+        if(attendance == 1) {
+            totalPresent++;
+        }
+    }
+
+    printf("\nTotal number of students present: %d\n", totalPresent);
+    return 0;
+}
+
+/* -------------------- Q2 -------------------- */
+#include <stdio.h>
+
+int main() {
+    float balance, withdrawal;
+
+    printf("Enter your initial balance: ");
+    scanf("%f", &balance);
+
+    while (balance > 0) {
+        printf("\nCurrent Balance: %.2f", balance);
+        printf("\nEnter withdrawal amount: ");
+        scanf("%f", &withdrawal);
+
+        balance = balance - withdrawal;
+
+        if (balance > 0) {
+            printf("Withdrawal successful.\n");
+        } else {
+            printf("Balance unsuccessful.\n");
+        }
+    }
+
+    printf("\nTransaction ended. Final Balance: %.2f\n", balance);
+    return 0;
+}
+
+/* -------------------- Q3 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int password;
+
+    do {
+        printf("Enter password: ");
+        scanf("%d", &password);
+
+        if (password != 1234) {
+            printf("Incorrect password. Try again.\n");
+        }
+
+    } while (password != 1234);
+
+    printf("Access Granted!\n");
+    return 0;
+}
+
+/* -------------------- Q4 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int N;
+    int sum = 0;
+
+    printf("Enter a number N: ");
+    scanf("%d", &N);
+
+    for(int i = 1; i <= N; i++) {
+        sum = sum + i;
+    }
+
+    printf("Sum of first %d natural numbers = %d\n", N, sum);
+    return 0;
+}
+
+/* -------------------- Q5 -------------------- */
+#include <stdio.h>
+
+int main() {
+    float temperature;
+    float sum = 0;
+    int count = 0;
+
+    printf("Enter temperature readings (-999 to stop): ");
+    scanf("%f", &temperature);
+
+    while (temperature != -999) {
+        sum = sum + temperature;
+        count++;
+
+        printf("Enter temperature reading (-999 to stop): ");
+        scanf("%f", &temperature);
+    }
+
+    if (count > 0) {
+        float average = sum / count;
+        printf("\nAverage Temperature = %.2f\n", average);
+    } else {
+        printf("\nNo valid temperature readings entered.\n");
+    }
+
+    return 0;
+}
+
+/* -------------------- Q6 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int number;
+
+    printf("Enter a number: ");
+    scanf("%d", &number);
+
+    printf("\nMultiplication Table of %d:\n", number);
+
+    for (int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", number, i, number * i);
+    }
+
+    return 0;
+}
+
+/* -------------------- Q7 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int choice;
+    float num1, num2;
+
+    do {
+        printf("\n--- Simple Calculator ---\n");
+        printf("1. Addition\n");
+        printf("2. Subtraction\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("Enter two numbers: ");
+            scanf("%f %f", &num1, &num2);
+            printf("Result = %.2f\n", num1 + num2);
+        }
+        else if (choice == 2) {
+            printf("Enter two numbers: ");
+            scanf("%f %f", &num1, &num2);
+            printf("Result = %.2f\n", num1 - num2);
+        }
+        else if (choice != 3) {
+            printf("Invalid choice. Please try again.\n");
+        }
+
+    } while (choice != 3);
+
+    return 0;
+}
+
+/* -------------------- Q8 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int guess;
+    int correctNumber = 7;
+
+    printf("Guess the number: ");
+    scanf("%d", &guess);
+
+    while (guess != correctNumber) {
+        if (guess > correctNumber) {
+            printf("Too High!\n");
+        } else {
+            printf("Too Low!\n");
+        }
+
+        printf("Try again: ");
+        scanf("%d", &guess);
+    }
+
+    printf("Correct!\n");
+    return 0;
+}
+
+/* -------------------- Q9 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int N;
+    int totalItems = 0;
+
+    printf("Enter number of boxes: ");
+    scanf("%d", &N);
+
+    for (int i = 1; i <= N; i++) {
+        totalItems += i;
+    }
+
+    printf("Total decorative items required = %d\n", totalItems);
+    return 0;
+}
+
+/* -------------------- Q10 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int score;
+    int distinction = 0, pass = 0, fail = 0;
+
+    printf("Enter student scores (0–100). Enter -1 to stop.\n");
+    scanf("%d", &score);
+
+    while (score != -1) {
+
+        if (score >= 75 && score <= 100) {
+            distinction++;
+        }
+        else if (score >= 50 && score <= 74) {
+            pass++;
+        }
+        else if (score >= 0 && score < 50) {
+            fail++;
+        }
+        else {
+            printf("Invalid score! Please enter between 0 and 100.\n");
+        }
+
+        scanf("%d", &score);
+    }
+
+    printf("\n--- Result Summary ---\n");
+    printf("Distinction: %d\n", distinction);
+    printf("Pass: %d\n", pass);
+    printf("Fail: %d\n", fail);
+
+    return 0;
+}
+
+/* -------------------- Q11 -------------------- */
+#include <stdio.h>
+
+int main() {
+    float price, total = 0, discount = 0, finalAmount;
+    int choice;
+
+    do {
+        printf("Enter product price: ");
+        scanf("%f", &price);
+
+        total += price;
+
+        printf("Add another product? (1 = Yes, 0 = No): ");
+        scanf("%d", &choice);
+
+    } while (choice == 1);
+
+    if (total > 5000) {
+        discount = total * 0.05;
+    }
+
+    finalAmount = total - discount;
+
+    printf("\n--- Bill Summary ---\n");
+    printf("Total Amount: %.2f\n", total);
+    printf("Discount: %.2f\n", discount);
+    printf("Final Payable Amount: %.2f\n", finalAmount);
+
+    return 0;
+}
+
+/* -------------------- Q12 -------------------- */
+#include <stdio.h>
+
+int main() {
+    int totalSeats = 40;
+    int bookedSeats = 0;
+    int choice;
+
+    while (bookedSeats < totalSeats) {
+
+        printf("\nEnter 1 to book a seat (0 to stop): ");
+        scanf("%d", &choice);
+
+        if (choice == 0) {
+            printf("Reservations stopped by operator.\n");
+            break;
+        }
+        else if (choice == 1) {
+            bookedSeats++;
+            printf("Seat booked successfully!\n");
+            printf("Remaining seats: %d\n", totalSeats - bookedSeats);
+        }
+        else {
+            printf("Invalid input. Please enter 1 or 0.\n");
+        }
+    }
+
+    if (bookedSeats == totalSeats) {
+        printf("\nAll seats are fully booked!\n");
+    }
+
+    printf("\nTotal seats booked: %d\n", bookedSeats);
+    printf("Total seats remaining: %d\n", totalSeats - bookedSeats);
+
+    return 0;
+}
